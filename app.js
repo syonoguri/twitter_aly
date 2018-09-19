@@ -1,8 +1,8 @@
 var http = require("http");
 var path = require("path");
-var bodyParser = require("body-parser");
 var morgan = require("morgan");
 var express = require("express");
+var bodyParser = require("body-parser");
 
 var app = express();
 
@@ -21,8 +21,7 @@ app.get("/form", function(req, res) {
 });
 
 app.post("/form", function(req, res){
-    return res.render("result", {username: req.body.username,
-                                message: req.body.message});
+    return res.render("result", {username: req.body.username, message: req.body.message});
 });
 
 var server = http.createServer(app);
