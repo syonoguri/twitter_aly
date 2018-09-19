@@ -12,9 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("views", path.join(__dirname, "templates" ));
 app.set("view engine", "pug");
 
-app.get("/", function(req, res) {
-    return res.render("index", {title: "Hello World" });
-});
+
 
 app.get("/form", function(req, res) {
     return res.render("form");
