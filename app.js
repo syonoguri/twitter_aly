@@ -22,7 +22,7 @@ app.get("/form", function(req, res) {
 
 app.post("/form", function(req, res){
     return res.render("result", {username: req.body.username,
-            message: req.body.message});
+                                message: req.body.message});
 });
 
 var server = http.createServer(app);
