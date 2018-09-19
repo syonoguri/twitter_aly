@@ -7,7 +7,7 @@ var app = express();
 
 app.use(morgan("combined"));
 
-app.set("views", path.join(_dirname, "templates" ));
+app.set("views", path.join(__dirname, "templates" ));
 app.set("view engine", "pug");
 
 app.get("/", function(req, res) {
