@@ -38,10 +38,11 @@ app.post("/form", function(req, res) {
         qs: {
             appid: key,
             sentence: req.body.sentence,
-        },
-        output: "json"
+        }
     }, function(err, res, body){
-        return console.log(body);
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(body, "text/xml");
+        return doc;
     });
     return res.render("result", {result: analyze});
 });
