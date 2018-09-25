@@ -10,7 +10,6 @@ var express = require("express");
 var app = express();
 var request = require("request")
 
-require("dotenv").config();
 var key = process.env.NODE_KEY;
 
 app.use("/static", express.static(path.join(__dirname,"static")));
