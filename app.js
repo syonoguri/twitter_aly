@@ -40,8 +40,8 @@ app.post("/form", function(req, res) {
             sentence: req.body.sentence,
         }
     }, function(err, res, body){
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(body, "text/xml");
+        var serializer = new XMLSerializer();
+        var doc = serializer.serializeToString(body);
         return doc;
     });
     return res.render("result", {result: analyze});
