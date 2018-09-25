@@ -42,9 +42,10 @@ app.post("/form", function(req, res) {
     }, function(err, res, body){
         return body;
     });
-    console.log(analyze);
+    console.log(body);
     return res.render("result", {result: analyze});
 });
 
 var server = http.createServer(app);
 server.listen(3000);
+
