@@ -37,7 +37,7 @@ app.post("/form", function(req, res) {
     var rakutenReq = request.get({
         url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
         qs: {
-            applicationId: Rkey,
+            applicationId: rKey,
             keyword: req.body.sentence,
         }
     }, function(error,response, body){
