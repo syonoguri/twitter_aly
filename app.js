@@ -55,7 +55,7 @@ app.post("/form", function(req, res) {
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify({
+            json: JSON.stringify({
                 appid: yKey,
                 sentence: resultOutputR,
                 output: "json"
