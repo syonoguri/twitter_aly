@@ -41,13 +41,13 @@ app.post("/form", function(req, res) {
             keyword: req.body.sentence,
         }
     }, function(error,response, body){
-        var analysisResult = JSON.parse(body);
-        console.log(analysisResult);
-        var resultArray = [];
+        var analysisResultR = JSON.parse(body);
+        console.log(analysisResultR);
+        var resultArrayR = [];
         for(var i=0; i<30; i++){
-            resultArray.push(analysisResult["Items"][i]["Item"]["itemName"]);
+            resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
         }
-        var resultOutputR = resultArray.join("");
+        var resultOutputR = resultArrayR.join("");
         console.log(resultOutputR);
         var analysis = request.get({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
