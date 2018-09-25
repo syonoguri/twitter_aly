@@ -42,7 +42,7 @@ app.post("/form", function(req, res) {
         }
     }, function(error, response, body){
         var parse = JSON.parse(body);
-        var doc = parse.join(":");
+        var doc = parse.valueOf();
         return res.render("result",{result: doc});
     }); 
 });
