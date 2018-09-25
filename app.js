@@ -44,31 +44,31 @@ app.post("/form", function(req, res) {
         var analysisResult = JSON.parse(body);
         console.log(analysisResult);
         var resultArray = [];
-        for(var i in analysisResult["Items"][i]["itemName"]){
-            resultArray.push(analysisResult["Items"][i]["itemName"]);
+        for(var i=0; i<30; i++){
+            resultArray.push(analysisResult["Items"][i]["Item"]["itemName"]);
         }
         console.log(resultArray);
         var resultOutputR = resultArray.join("");
-        return resultOutputR;
+        var analysis = request.get({
+            url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
+            qs: {
+                appid: yKey,
+                sentence: resultOutputR,
+                output: "json"
+            }
+        }, function(error, response, body){
+            var analysisResult = JSON.parse(body);
+            console.log(analysisResult);
+            var resultArray = [];
+            for(var i in analysisResult){
+                resultArray.push(i+":"+analysisResult[i]);
+            }
+            console.log(resultArray);
+            var resultOutput = resultArray.join(" , ")
+            res.render("result",{result: resultOutput});
+        }); 
     });
-    var analysis = request.get({
-        url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
-        qs: {
-            appid: yKey,
-            sentence: resultOutputR,
-            output: "json"
-        }
-    }, function(error, response, body){
-        var analysisResult = JSON.parse(body);
-        console.log(analysisResult);
-        var resultArray = [];
-        for(var i in analysisResult){
-            resultArray.push(i+":"+analysisResult[i]);
-        }
-        console.log(resultArray);
-        var resultOutput = resultArray.join(" , ")
-        res.render("result",{result: resultOutput});
-    }); 
+    
 });
 
 var server = http.createServer(app);
