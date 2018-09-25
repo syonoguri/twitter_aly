@@ -33,7 +33,7 @@ app.get("/form", function(req, res) {
 });
 
 app.post("/form", function(req, res) {
-    var analyze = request.get({
+    var analysis = request.get({
         url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
         qs: {
             appid: key,
@@ -41,7 +41,13 @@ app.post("/form", function(req, res) {
             output: "json"
         }
     }, function(error, response, body){
-        res.json(body);   
+        var analysisResult = JSON.parse(body);
+        var resultOutput = [];
+        for(var i in analysisResult){
+            resultOutput.push(i+" : "+analysisResult.i);
+            console.log(resultOutput);
+        }
+        res.render("result",{result: resultOutput});
     }); 
 });
 
