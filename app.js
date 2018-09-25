@@ -40,10 +40,8 @@ app.post("/form", function(req, res) {
             sentence: req.body.sentence
         }
     }, function(err, res, body){
-        return body;
+        console.log(body);
     });
-    analyze();
-    console.log(body);
     return res.render("result", {result: analyze});
 });
 
