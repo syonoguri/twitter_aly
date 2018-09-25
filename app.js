@@ -55,11 +55,11 @@ app.post("/form", function(req, res) {
             headers: {
                 "content-type": "application/json"
             },
-            json: JSON.stringify({
+            form: {
                 appid: yKey,
                 sentence: resultOutputR,
                 output: "json"
-            })
+            }
         }, function(error, response, body){
             console.log("aa")
             console.log(body);
