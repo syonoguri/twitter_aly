@@ -38,7 +38,8 @@ app.post("/form", function(req, res) {
         qs: {
             appid: key,
             sentence: req.body.sentence,
-        }
+        },
+        output: json
     }, function(err, res, body){
         return body
     });
