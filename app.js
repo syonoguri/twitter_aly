@@ -39,10 +39,10 @@ app.post("/form", function(req, res) {
             appid: key,
             sentence: req.body.sentence
         }
-    }, function(err, res, body){
+    }, function(error, response, body){
         console.log(body);
-    });
-    return res.render("result", {result: analyze});
+        return res.render("result",{result: body});
+    }); 
 });
 
 var server = http.createServer(app);
