@@ -48,7 +48,7 @@ app.post("/form", function(req, res) {
             resultArray.push(i+":"+analysisResult[i]);
         }
         console.log(resultArray);
-        var resultOutput = resultArray.join(" \n ")
+        var resultOutput = resultArray.join(" </br> ")
         res.render("result",{result: resultOutput});
     }); 
 });
