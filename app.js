@@ -49,6 +49,7 @@ app.post("/form", function(req, res) {
         }
         var resultOutputR = resultArrayR.join("");
         console.log(resultOutputR);
+
         var analysis = request.get({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
             qs: {
@@ -57,6 +58,8 @@ app.post("/form", function(req, res) {
                 output: "json"
             }
         }, function(error, response, body){
+            console.log("aa")
+            console.log(body);
             var analysisResult = JSON.parse(body);
             console.log(analysisResult);
             var resultArray = [];
