@@ -39,7 +39,7 @@ app.post("/form", function(req, res) {
             appid: key,
             sentence: req.body.sentence,
         },
-        output: json
+        output: "json"
     }, function(err, res, body){
         return body
     });
