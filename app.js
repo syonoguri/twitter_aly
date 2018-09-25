@@ -38,11 +38,12 @@ app.post("/form", function(req, res) {
         qs: {
             appid: key,
             sentence: req.body.sentence,
+            output: "json"
         }
     }, function(err, res, body){
         return body;
     });
-    return res.render("result", {result: analyze[0]});
+    return res.render("result", {result: analyze});
 });
 
 var server = http.createServer(app);
