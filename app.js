@@ -14,7 +14,8 @@ var request = require("request")
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
 
-var key = process.env.NODE_KEY;
+var yKey = process.env.NODE_YKEY;
+var rKey = process.env.NODE_RKEY;
 
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,11 +34,28 @@ app.get("/form", function(req, res) {
 });
 
 app.post("/form", function(req, res) {
+    var rakutenReq = request.get({
+        url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
+        qs: {
+            applicationId: Rkey,
+            keyword: req.body.sentence,
+        }
+    }, function(error,response, body){
+        var analysisResult = JSON.parse(body);
+        console.log(analysisResult);
+        var resultArray = [];
+        for(var i in analysisResult["Items"][i]["Item"][itemName]){
+            resultArray.push(i+":"+analysisResult["Items"][i]["Item"][itemName]);
+        }
+        console.log(resultArray);
+        var resultOutputR = resultArray.join("");
+        return resultOutputR;
+    });
     var analysis = request.get({
         url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
         qs: {
-            appid: key,
-            sentence: req.body.sentence,
+            appid: yKey,
+            sentence: resultOutputR,
             output: "json"
         }
     }, function(error, response, body){
