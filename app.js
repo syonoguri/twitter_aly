@@ -11,8 +11,13 @@ var http = require("http");
 var path = require("path");
 var app = express();
 var request = require("request")
+var bodyParser = require("body-parser");
+var morgan = require("morgan");
 
 var key = process.env.NODE_KEY;
+
+app.use(morgan("combined"));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/static", express.static(path.join(__dirname,"static")));
 
