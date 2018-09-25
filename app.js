@@ -42,11 +42,13 @@ app.post("/form", function(req, res) {
         }
     }, function(error, response, body){
         var analysisResult = JSON.parse(body);
-        var resultOutput = [];
+        var resultArray = [];
         for(var i in analysisResult){
-            resultOutput.push(i+" : "+analysisResult.i);
-            console.log(resultOutput);
+            resultArray.push(i+":"+analysisResult.i);
         }
+        console.log(resultArray);
+        var resultOutput = resultArray.join(" , ")
+        
         res.render("result",{result: resultOutput});
     }); 
 });
