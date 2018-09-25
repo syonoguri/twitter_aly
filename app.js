@@ -45,7 +45,7 @@ app.post("/form", function(req, res) {
         console.log(analysisResult);
         var resultArray = [];
         for(var i in analysisResult){
-            resultArray.push(i+":"+analysisResult.i.toString());
+            resultArray.push(i+":"+analysisResult[i]);
         }
         console.log(resultArray);
         var resultOutput = resultArray.join(" , ")
