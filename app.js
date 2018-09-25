@@ -40,9 +40,7 @@ app.post("/form", function(req, res) {
             sentence: req.body.sentence,
         }
     }, function(err, res, body){
-        var serializer = new XMLSerializer();
-        var doc = serializer.serializeToString(body);
-        return doc;
+        return body;
     });
     return res.render("result", {result: analyze});
 });
