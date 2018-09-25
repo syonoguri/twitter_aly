@@ -23,6 +23,10 @@ app.get("/", function(req, res) {
     return res.render("index", {title: "Hello World" });
 });
 
+app.get("/form", function(req, res) {
+    return res.render("form");
+});
+
 app.post("/form", function(req, res) {
     request.get({
         url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
