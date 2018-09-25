@@ -50,13 +50,16 @@ app.post("/form", function(req, res) {
         var resultOutputR = resultArrayR.join("");
         console.log(resultOutputR);
 
-        var analysis = request.get({
+        var analysis = request.post({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
-            qs: {
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
                 appid: yKey,
                 sentence: resultOutputR,
                 output: "json"
-            }
+            })
         }, function(error, response, body){
             console.log("aa")
             console.log(body);
