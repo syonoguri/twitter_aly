@@ -33,16 +33,16 @@ app.get("/form", function(req, res) {
 });
 
 app.post("/form", function(req, res) {
-    request.get({
+    var analyze = request.get({
         url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
         qs: {
             appid: key,
             sentence: req.body.sentence,
         }
     }, function(err, res, body){
-        return console.log(body);
+        return body
     });
-    
+    return res.render("result", {result: analyze()});
 });
 
 var server = http.createServer(app);
