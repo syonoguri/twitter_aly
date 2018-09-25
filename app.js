@@ -47,8 +47,8 @@ app.post("/form", function(req, res) {
         for(var i=0; i<30; i++){
             resultArray.push(analysisResult["Items"][i]["Item"]["itemName"]);
         }
-        console.log(resultArray);
         var resultOutputR = resultArray.join("");
+        console.log(resultOutputR);
         var analysis = request.get({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
             qs: {
