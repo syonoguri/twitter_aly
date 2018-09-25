@@ -37,7 +37,8 @@ app.post("/form", function(req, res) {
         url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
         qs: {
             appid: key,
-            sentence: req.body.sentence
+            sentence: req.body.sentence,
+            output: "json"
         }
     }, function(error, response, body){
         console.log(body);
