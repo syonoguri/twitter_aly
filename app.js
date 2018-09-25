@@ -39,12 +39,13 @@ app.post("/form", function(req, res) {
         qs: {
             applicationId: rKey,
             keyword: req.body.sentence,
+            hits: 100
         }
     }, function(error,response, body){
         var analysisResultR = JSON.parse(body);
         console.log(analysisResultR);
         var resultArrayR = [];
-        for(var i=0; i<30; i++){
+        for(var i=0; i<100; i++){
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
         }
         var resultOutputR = resultArrayR.join("");
