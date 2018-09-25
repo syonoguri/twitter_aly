@@ -40,7 +40,7 @@ app.post("/form", function(req, res) {
             sentence: req.body.sentence,
         }
     }, function(err, res, body){
-        res.render("result", {result: body});
+        return res.render("result", {result: body});
     });
 });
 
