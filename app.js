@@ -40,8 +40,9 @@ app.post("/form", function(req, res) {
             sentence: req.body.sentence,
         }
     }, function(err, res, body){
-        return res.render("result", {result: body});
+        return body;
     });
+    return res.render("result", {result: body});
 });
 
 var server = http.createServer(app);
