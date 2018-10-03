@@ -43,14 +43,19 @@ app.post("/form", function(req, res) {
     }, function(error,response, body){
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
-        for(var i=0; i<30; i++){
-            if(analysisResultR["Items"][i] == undefined) {
-                resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
-                res.render("result",{result: resultArrayR[0]});
-                return;
-            }    
-            resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
+
+        // 該当商品が無かった場合の処理
+        if(analysisResultR["Items"][0] == undefined) {
+            resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
+            res.render("result",{result: resultArrayR[0]});
+            return;
         }
+
+        for(var i=0; i<30; i++){    
+            resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
+            if(analysisResultR["Items"][i+1] == undefined) break;
+        }
+        
         var resultOutputR = resultArrayR.join("");
 
         var analysis = request.post({
