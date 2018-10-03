@@ -46,7 +46,8 @@ app.post("/form", function(req, res) {
         for(var i=0; i<30; i++){
             if(analysisResultR["Items"][i] == undefined) {
                 resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
-                break;
+                res.render("result",{result: resultArrayR[0]});
+                return;
             }    
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
         }
