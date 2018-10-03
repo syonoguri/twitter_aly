@@ -1,10 +1,3 @@
-/* ----------------------------------------------------------------
-
-
-
-
----------------------------------------------------------------- */
-
 
 var express = require("express");
 var http = require("http");
@@ -51,11 +44,13 @@ app.post("/form", function(req, res) {
             return;
         }
 
+        // 検索でヒットした商品のタイトルを配列に格納
         for(var i=0; i<30; i++){    
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
+            // 検索結果が30商品に満たなかった場合の処理
             if(analysisResultR["Items"][i+1] == undefined) break;
         }
-        
+        // 配列に格納した商品タイトルを文字列に変換
         var resultOutputR = resultArrayR.join("");
 
         var analysis = request.post({
