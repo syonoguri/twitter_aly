@@ -43,8 +43,11 @@ app.post("/form", function(req, res) {
     }, function(error,response, body){
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
-        for(var i=0; i<30; i++){
+        var i = 0
+        for(var j in resultArrayR){
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
+            i += 1;
+            if(i>30) return;
         }
         var resultOutputR = resultArrayR.join("");
 
