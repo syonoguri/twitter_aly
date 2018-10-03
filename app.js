@@ -42,13 +42,11 @@ app.post("/form", function(req, res) {
         }
     }, function(error,response, body){
         var analysisResultR = JSON.parse(body);
-        console.log(analysisResultR);
         var resultArrayR = [];
         for(var i=0; i<30; i++){
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
         }
         var resultOutputR = resultArrayR.join("");
-        console.log(resultOutputR);
 
         var analysis = request.post({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
@@ -61,15 +59,11 @@ app.post("/form", function(req, res) {
                 output: "json"
             }
         }, function(error, response, body){
-            console.log("aa")
-            console.log(body);
             var analysisResult = JSON.parse(body);
-            console.log(analysisResult);
             var resultArray = [];
             for(var i in analysisResult){
                 resultArray.push(i+":"+analysisResult[i]);
             }
-            console.log(resultArray);
             var resultOutput = resultArray.join(" , ")
             res.render("result",{result: resultOutput});
         }); 
