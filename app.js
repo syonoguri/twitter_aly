@@ -44,7 +44,7 @@ app.post("/form", function(req, res) {
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
         var i = 0
-        for(var j in analysisResultR){
+        for(var j in analysisResultR["items"]){
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
             i += 1;
             if(i>=30) break;
