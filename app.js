@@ -43,8 +43,9 @@ app.post("/form", function(req, res) {
     }, function(error,response, body){
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
+        console.log(analysisResultR["item"]);
         var i = 0
-        for(var j in analysisResultR["items"]){
+        for(var j in analysisResultR){
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
             i += 1;
             if(i>=30) break;
