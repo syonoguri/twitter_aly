@@ -44,7 +44,7 @@ app.post("/form", function(req, res) {
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
         for(var i=0; i<30; i++){
-            if(analysisResultR["Items"[i]] == undefined) break;
+            if(analysisResultR["Items"][i] == undefined) break;
             resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
         }
         var resultOutputR = resultArrayR.join("");
