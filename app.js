@@ -33,13 +33,13 @@ app.post("/form", function(req, res) {
             applicationId: rKey,
             keyword: req.body.sentence,
         }
-    }, function(error,response, body){
+    }, function(error,response,body){
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
 
         console.log(analysisResultR);
         // 該当商品が無かった場合の処理
-        if(analysisResultR["Items"]==undefined || analysisResultR["Items"][0]==undefined) {
+        if(analysisResultR["Items"][0]==undefined) {
             resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
             res.render("result",{result: resultArrayR[0]});
             return;
@@ -70,7 +70,7 @@ app.post("/form", function(req, res) {
             for(var i in analysisResult){
                 resultArray.push(i+":"+analysisResult[i]);
             }
-            var resultOutput = resultArray.join(" , ")
+            var resultOutput = resultArray.join(" , ");
             res.render("result",{result: resultOutput});
         }); 
     });
