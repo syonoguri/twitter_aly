@@ -26,16 +26,16 @@ var GetKeyword = {
         }
     },
     rakutenCallback: function(error,response,body){
-        this.thereIsNoItem();
-        this.itemNameToArray();
+        this.thereIsNoItem(analysisResltR);
+        this.itemNameToArray(analysisResltR);
     },
-    thereIsNoItem: function(){
+    thereIsNoItem: function(analysisResultR){
         if(analysisResultR["Items"][0]==undefined) {
             res.render("result",{result: "Error:このキーワードでヒットする商品がありません。"});
             return;
         }
     },
-    itemNameToArray: function(){
+    itemNameToArray: function(analysisResltR){
         var resultArray=[];
         for(var i=0; i<30; i++){    
             resultArray.push(analysisResultR["Items"][i]["Item"]["itemName"]);
@@ -45,7 +45,7 @@ var GetKeyword = {
         return resultArray;
     },
     yahooTextApi: function(){
-        var resultOutputR=this.itemNameToArray().join("");
+        var resultOutputR=this.itemNameToArray(analysisResltR).join("");
         request.post({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
             headers: {
@@ -60,7 +60,7 @@ var GetKeyword = {
             this.yahooResultToStr();
         }); 
     },
-    yahooResultToStr: function(){
+    yahooResultToStr: function(body){
         var analysisResult = JSON.parse(body);
         var resultArray = [];
         for(var i in analysisResult){
