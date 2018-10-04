@@ -44,7 +44,7 @@ var GetKeyword = {
         }
         return resultArray;
     },
-    yahooTextApi: function(analysisResltR){
+    yahooTextApi: function(){
         var resultOutputR=this.itemNameToArray(analysisResltR).join("");
         request.post({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
@@ -89,7 +89,7 @@ app.get("/form", function(req, res) {
 
 app.post("/form", function(req, res) {
     GetKeyword.rakutenApi(req, res);
-    GetKeyword.yahooTextApi(analysisResltR);
+    GetKeyword.yahooTextApi();
 });
 
 var server = http.createServer(app);
