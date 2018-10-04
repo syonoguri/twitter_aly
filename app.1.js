@@ -9,7 +9,7 @@ var morgan = require("morgan");
 var yKey = process.env.NODE_YKEY;
 var rKey = process.env.NODE_RKEY;
 var GetKeyword = {
-    rakutenApi: function() {
+    rakutenApi: function(req, res) {
         if(req.body.sentence==""){
             res.render("result",{result: "Error: 入力がありません"})
         } else {
@@ -21,11 +21,11 @@ var GetKeyword = {
                 }
             }, function(error,response,body){
                 var analysisResultR=JSON.parse(body);
-                this.rakutenCallback();
+                this.rakutenCallback(error,response,body);
             });
         }
     },
-    rakutenCallback: function(){
+    rakutenCallback: function(error,response,body){
         this.thereIsNoItem();
         this.itemNameToArray();
     },
@@ -88,7 +88,7 @@ app.get("/form", function(req, res) {
 
 
 app.post("/form", function(req, res) {
-    GetKeyword.rakutenApi();
+    GetKeyword.rakutenApi(req, res);
     GetKeyword.yahooTextApi();
 });
 
