@@ -39,7 +39,7 @@ app.post("/form", function(req, res) {
 
         console.log(analysisResultR);
         // 該当商品が無かった場合の処理
-        if(analysisResultR==undefined || analysisResultR["Items"][0]==undefined) {
+        if(analysisResultR["Items"]==undefined || analysisResultR["Items"][0]==undefined) {
             resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
             res.render("result",{result: resultArrayR[0]});
             return;
