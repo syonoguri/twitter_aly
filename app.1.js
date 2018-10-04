@@ -21,6 +21,7 @@ var GetKeyword = {
                 }
             }, function(error,response,body){
                 var analysisResultR=JSON.parse(body);
+                
                 this.rakutenCallback();
             });
         }
@@ -30,8 +31,10 @@ var GetKeyword = {
         this.itemNameToArray();
     },
     thereIsNoItem: function(){
+        if(analysisResultR["Items"][0]==undefined) {
             res.render("result",{result: "Error:このキーワードでヒットする商品がありません。"});
             return;
+        }
     },
     itemNameToArray: function(){
         var resultArray=[];

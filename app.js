@@ -27,13 +27,16 @@ app.get("/form", function(req, res) {
 
 
 app.post("/form", function(req, res) {
-    var rakutenReq = request.get({
-        url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
-        qs: {
-            applicationId: rKey,
-            keyword: req.body.sentence,
-        }
-    }, function(error,response,body){
+    if(req.body.sentence==null) {
+        res.render("result",{result: "Error: 入力がありません"})
+    } else {
+        request.get({
+            url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
+            qs: {
+                applicationId: rKey,
+                keyword: req.body.sentence,
+            }
+        }, function(error,response,body){
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
 
