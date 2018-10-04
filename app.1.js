@@ -10,7 +10,7 @@ var yKey = process.env.NODE_YKEY;
 var rKey = process.env.NODE_RKEY;
 var GetKeyword = {
     rakutenApi: function() {
-        if(req.body.sentence==null){
+        if(req.body.sentence==""){
             res.render("result",{result: "Error: 入力がありません"})
         } else {
             request.get({
