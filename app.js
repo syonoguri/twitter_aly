@@ -77,7 +77,7 @@ app.post("/form", function(req, res) {
             res.render("result",{result: resultOutput});
         }); 
     });
-    
+    }
 });
 
 var server = http.createServer(app);

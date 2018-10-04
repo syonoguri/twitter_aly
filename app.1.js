@@ -21,7 +21,6 @@ var GetKeyword = {
                 }
             }, function(error,response,body){
                 var analysisResultR=JSON.parse(body);
-                
                 this.rakutenCallback();
             });
         }
