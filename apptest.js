@@ -17,7 +17,7 @@ describe("仮テスト", function(){
 
 
 var jsonToArray = function(){
-    var body ={
+    var bd ={
       "count": 7006,
       "page": 1,
       "first": 1,
@@ -1454,7 +1454,7 @@ var jsonToArray = function(){
       "GenreInformation": [],
       "TagInformation": []
     }
-    var analysisResultR = JSON.parse(body);
+    var analysisResultR = JSON.parse(bd);
     var resultArrayR = [];
     // 該当商品が無かった場合の処理
     if(analysisResultR["Items"][0]==undefined) {
