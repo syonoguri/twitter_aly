@@ -6,7 +6,28 @@ var assert = chai.assert;
 
 
 
-var jsonToArray = function(){
+var jsonToArray = function(bd){
+  
+  var body = JSON.stringify(bd)
+  var analysisResultR = JSON.parse(body);
+  var resultArrayR = [];
+  // 該当商品が無かった場合の処理
+  if(analysisResultR["Items"][0]==undefined) {
+    resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
+    return resultArrayR;
+  }
+  // 検索でヒットした商品のタイトルを配列に格納
+  for(var i=0; i<30; i++){    
+    resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
+    // 検索結果が30商品に満たなかった場合の処理
+    if(analysisResultR["Items"][i+1] == undefined) return resultArrayR;}
+  return resultArrayR;
+}
+
+
+
+
+describe("楽天のテスト",function(){
   var bd ={
     "count": 7006,
     "page": 1,
@@ -1444,30 +1465,10 @@ var jsonToArray = function(){
     "GenreInformation": [],
     "TagInformation": []
   }
-  var body = JSON.stringify(bd)
-  var analysisResultR = JSON.parse(body);
-  var resultArrayR = [];
-  // 該当商品が無かった場合の処理
-  if(analysisResultR["Items"][0]==undefined) {
-    resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
-    return resultArrayR;
-  }
-  // 検索でヒットした商品のタイトルを配列に格納
-  for(var i=0; i<30; i++){    
-    resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
-    // 検索結果が30商品に満たなかった場合の処理
-    if(analysisResultR["Items"][i+1] == undefined) return resultArrayR;}
-  return resultArrayR;
-}
-
-
-
-
-describe("楽天のテスト",function(){
     
-    it("JSONから配列へ", function(){
-        assert.isArray(jsonToArray());
-    });
+  it("JSONから配列へ", function(){
+    assert.isArray(jsonToArray(bd));
+  });
 });
 
 
