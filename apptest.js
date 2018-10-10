@@ -1444,7 +1444,8 @@ var jsonToArray = function(){
     "GenreInformation": [],
     "TagInformation": []
   }
-  var analysisResultR = JSON.parse(bd);
+  var body = JSON.stringify(bd)
+  var analysisResultR = JSON.parse(body);
   var resultArrayR = [];
   // 該当商品が無かった場合の処理
   if(analysisResultR["Items"][0]==undefined) {
