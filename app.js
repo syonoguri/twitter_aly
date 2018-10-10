@@ -37,10 +37,13 @@ app.post("/form", function(req, res) {
                 keyword: req.body.sentence,
             }
         }, function(error,response,body){
+        var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
+        console.log(body);
+        console.log(analysisResultR);
 
         // 該当商品が無かった場合の処理
-        if(body["Items"][0]==undefined) {
+        if(analysisResultR["Items"][0]==undefined) {
             resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
             res.render("result",{result: resultArrayR[0]});
             return;
@@ -48,9 +51,9 @@ app.post("/form", function(req, res) {
 
         // 検索でヒットした商品のタイトルを配列に格納
         for(var i=0; i<30; i++){    
-            resultArrayR.push(body["Items"][i]["Item"]["itemName"]);
+            resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
             // 検索結果が30商品に満たなかった場合の処理
-            if(body["Items"][i+1] == undefined) break;
+            if(analysisResultR["Items"][i+1] == undefined) break;
         }
         // 配列に格納した商品タイトルを文字列に変換
         var resultOutputR = resultArrayR.join("");
