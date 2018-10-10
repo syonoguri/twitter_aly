@@ -8,7 +8,7 @@ var assert = chai.assert;
 
 var jsonToArray = function(body){
   
-  var analysisResultR = JSON.parse(body);
+  var analysisResultR = JSON.parse(JSON.stringify(body));
   var resultArrayR = [];
   // 該当商品が無かった場合の処理
   if(analysisResultR["Items"][0]==undefined) {
