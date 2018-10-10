@@ -8,7 +8,7 @@ var assert = chai.assert;
 
 var jsonToArray = function(body){
   
-  var analysisResultR = body;
+  var analysisResultR = JSON.parse(body);
   var resultArrayR = [];
   // 該当商品が無かった場合の処理
   if(analysisResultR.Items[0]==undefined) {
@@ -27,7 +27,7 @@ var jsonToArray = function(body){
 
 
 describe("楽天のテスト",function(){
-  var bd ={
+  var bd =`{
     "count": 6963,
     "page": 1,
     "first": 1,
@@ -1455,12 +1455,12 @@ describe("楽天のテスト",function(){
     ],
     "GenreInformation": [],
     "TagInformation": []
-  }
-  var notext = {
+  }`
+  var notext = `{
     "error": "wrong_parameter",
     "error_description": "keyword or itemCode is essential parameter, or set genreId value except 0. To search for items in shop, please give your shopCode and set genreId to 0"
-  }
-  var noresult = {
+  }`
+  var noresult = `{
     "count": 0,
     "page": 1,
     "first": 0,
@@ -1471,8 +1471,8 @@ describe("楽天のテスト",function(){
     "Items": [],
     "GenreInformation": [],
     "TagInformation": []
-  }
-  var biyoushi = {
+  }`
+  var biyoushi = `{
     "count": 9,
     "page": 1,
     "first": 1,
@@ -1955,7 +1955,7 @@ describe("楽天のテスト",function(){
     ],
     "GenreInformation": [],
     "TagInformation": []
-  }
+  }`
   it("JSONから配列へ：ノーマル", function(){
     assert.isArray(jsonToArray(bd));
   });
