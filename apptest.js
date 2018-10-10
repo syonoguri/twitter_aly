@@ -1465,9 +1465,517 @@ describe("楽天のテスト",function(){
     "GenreInformation": [],
     "TagInformation": []
   }
-    
-  it("JSONから配列へ", function(){
+  var notext = {
+    "error": "wrong_parameter",
+    "error_description": "keyword or itemCode is essential parameter, or set genreId value except 0. To search for items in shop, please give your shopCode and set genreId to 0"
+  }
+  var noresult = {
+    "count": 0,
+    "page": 1,
+    "first": 0,
+    "last": 0,
+    "hits": 0,
+    "carrier": 0,
+    "pageCount": 0,
+    "Items": [],
+    "GenreInformation": [],
+    "TagInformation": []
+  }
+  var biyoushi = {
+    "count": 9,
+    "page": 1,
+    "first": 1,
+    "last": 9,
+    "hits": 9,
+    "carrier": 0,
+    "pageCount": 1,
+    "Items": [
+      {
+        "Item": {
+          "itemName": "【中古】 美容師試験問題と解説 / 受験研究会 / 新星出版社 [単行本]【ネコポス発送】",
+          "catchcopy": "【最短で翌日お届け。通常24時間以内発送、午後1時までは当日発送】",
+          "itemCode": "mottainaihonpo:10484629",
+          "itemPrice": 403,
+          "itemCaption": "著者：受験研究会出版社：新星出版社サイズ：単行本ISBN-10：4405021104ISBN-13：9784405021105■通常24時間以内に発送可能です。午後1時までのご注文は通常当日出荷。■ネコポスで送料は1点なら188円です。2点は218円。3点は278円。4点は318円。5点以上は600円になります。※2,500円以上の購入で送料無料。※多数ご購入頂いた場合は、宅配便での発送になる場合があります。■ただいま、しおり、カレンダーをプレゼントしております。■送料無料の「もったいない本舗本店」もご利用ください。メール便送料無料です。■中古品ではございますが、良好なコンディションです。決済は、クレジットカード、楽天バンクがご利用可能です。※楽天バンク決済の場合、当日正午までの注文が当日発送となります。■万が一品質に不備が有った場合は、返金対応。■クリーニング済み。■商品画像に「帯」が付いているものがありますが、中古品のため、実際の商品には付いていない場合がございます。■”s1、s2”などの番号は、弊社管理番号です。どちらでもご購入いただけます。■商品状態の表記につきまして・非常に良い：　　使用されてはいますが、　　非常にきれいな状態です。　　書き込みや線引きはありません。・良い：　　比較的綺麗な状態の商品です。　　ページやカバーに欠品はありません。　　文章を読むのに支障はありません。・可：　　文章が問題なく読める状態の商品です。　　マーカーやペンで書込があることがあります。　　商品の痛みがある場合があります。",
+          "itemUrl": "https://item.rakuten.co.jp/mottainaihonpo/4405021104/",
+          "shopUrl": "https://www.rakuten.co.jp/mottainaihonpo/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/mottainaihonpo/cabinet/05833200/bkvnzadps26larn9.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/mottainaihonpo/cabinet/05833200/bkvnzadps26larn9.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 1,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 0,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 1,
+          "asurakuClosingTime": "13:00",
+          "asurakuArea": "群馬県/埼玉県/千葉県/東京都/神奈川県/新潟県/富山県/石川県/福井県/山梨県/長野県/岐阜県/静岡県/愛知県/三重県/滋賀県/京都府/大阪府/兵庫県/奈良県/宮城県/山形県/福島県/茨城県/栃木県",
+          "affiliateRate": 1,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 0,
+          "reviewAverage": 0,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "もったいない本舗　お急ぎ便店",
+          "shopCode": "mottainaihonpo",
+          "genreId": "101934",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "【中古】 美容師試験問題と解説 / 受験研究会 / 新星出版社 [単行本]【メール便送料無料】【あす楽対応】",
+          "catchcopy": "【メール便送料無料、通常24時間以内発送、午後1時までは当日発送】",
+          "itemCode": "comicset:11020615",
+          "itemPrice": 403,
+          "itemCaption": "著者：受験研究会出版社：新星出版社サイズ：単行本ISBN-10：4405021104ISBN-13：9784405021105■通常24時間以内に発送可能です。午後1時までのご注文は通常当日出荷。■メール便は、1冊から送料無料です。※宅配便の場合、2,500円以上送料無料です。※あす楽ご希望の方は、宅配便をご選択下さい。※「代引き」ご希望の方は宅配便をご選択下さい。■ただいま、しおり、カレンダーをプレゼントしております。■お急ぎの方は「もったいない本舗　お急ぎ便店」をご利用ください。最短翌日配送、手数料188円から■中古品ではございますが、良好なコンディションです。決済は、クレジットカード、代引き等、各種決済方法がご利用可能です。■万が一品質に不備が有った場合は、返金対応。■クリーニング済み。■商品画像に「帯」が付いているものがありますが、中古品のため、実際の商品には付いていない場合がございます。■”s1、s2”などの番号は、弊社管理番号です。どちらでもご購入いただけます。■商品状態の表記につきまして・非常に良い：　　使用されてはいますが、　　非常にきれいな状態です。　　書き込みや線引きはありません。・良い：　　比較的綺麗な状態の商品です。　　ページやカバーに欠品はありません。　　文章を読むのに支障はありません。・可：　　文章が問題なく読める状態の商品です。　　マーカーやペンで書込があることがあります。　　商品の痛みがある場合があります。",
+          "itemUrl": "https://item.rakuten.co.jp/comicset/4405021104/",
+          "shopUrl": "https://www.rakuten.co.jp/comicset/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/comicset/cabinet/05114726/bkvnzadps26larn9.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/comicset/cabinet/05114726/bkvnzadps26larn9.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 1,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 1,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 1,
+          "asurakuClosingTime": "13:00",
+          "asurakuArea": "群馬県/埼玉県/千葉県/東京都/神奈川県/新潟県/富山県/石川県/福井県/山梨県/長野県/岐阜県/静岡県/愛知県/三重県/滋賀県/京都府/大阪府/兵庫県/奈良県/宮城県/山形県/福島県/茨城県/栃木県",
+          "affiliateRate": 1.1,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 0,
+          "reviewAverage": 0,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "もったいない本舗　楽天市場店",
+          "shopCode": "comicset",
+          "genreId": "101934",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "『中古』美容師 試験問題と解説 (国家・資格シリーズ 45)",
+          "catchcopy": "「初版発行日」1994/12/22 「著者」内海 修也 (著) 「出版社」弘文社",
+          "itemCode": "kyoudo2014:13023826",
+          "itemPrice": 154208,
+          "itemCaption": "内海 修也 (著)、1994-12-22、弘文社、180P 【ご注文をお考えのお客様へ】本文以外に目次などに捺印、記名などある場合があります。装丁、カバーは初版発行の商品と異なる場合があります。詳細について不明な点があればお気軽にお問い合わせ下さい。表記の発行年は初版発行年であり実際の商品は異なる場合があります。また、古書の為、経年並みの劣化（ヤケ、シミ、ハガシ跡、小ヤブレ等）はご了承下さいませ。その他、特に表記のない場合、カバー、箱等がついてない場合があります。倉庫より取り寄せし、商品の最終確認してからの配送となりますので、受注後商品の発送開始までに約5日程度かかる場合がございます。きちんと梱包して発送します。こちらの商品は他でも併売の為、品切れの際は速やかに返金します。又、領収書が必要な場合はお気軽にお申し付け下さい。一般のご注文以外に大学・公共機関のご注文も承ります。なお弊社の過失が明白である場合を除き、返品は基本的にお受けいたしかねます。万が一返品の場合は弊社規定によるものとさせていただきます。ご利用お待ちしております",
+          "itemUrl": "https://item.rakuten.co.jp/kyoudo2014/81200054907/",
+          "shopUrl": "https://www.rakuten.co.jp/kyoudo2014/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/kyoudo2014/cabinet/04012717/04036293/img67504721.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/kyoudo2014/cabinet/04012717/04036293/img67504721.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 1,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 0,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 0,
+          "asurakuClosingTime": "",
+          "asurakuArea": "",
+          "affiliateRate": 1,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 0,
+          "reviewAverage": 0,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "KSC",
+          "shopCode": "kyoudo2014",
+          "genreId": "203063",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "『中古』美容師 試験問題と解説 (国家・資格シリーズ 45)",
+          "catchcopy": "「初版発行日」1994/12/22 「著者」内海 修也 (著) 「出版社」弘文社",
+          "itemCode": "kyoudo2014:13448128",
+          "itemPrice": 9989,
+          "itemCaption": "「初版発行日」1994/12/22 「著者」内海 修也 (著) 「出版社」弘文社477031180X",
+          "itemUrl": "https://item.rakuten.co.jp/kyoudo2014/86348328/",
+          "shopUrl": "https://www.rakuten.co.jp/kyoudo2014/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/kyoudo2014/cabinet/04012717/04036293/img67504721.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/kyoudo2014/cabinet/04012717/04036293/img67504721.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 1,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 0,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 0,
+          "asurakuClosingTime": "",
+          "asurakuArea": "",
+          "affiliateRate": 1,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 0,
+          "reviewAverage": 0,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "KSC",
+          "shopCode": "kyoudo2014",
+          "genreId": "203063",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "【中古】 美容師試験 問題と解説 ／産業・労働(その他) 【中古】afb",
+          "catchcopy": "",
+          "itemCode": "bookoffonline:11995648",
+          "itemPrice": 198,
+          "itemCaption": "産業・労働(その他)販売会社/発売会社：新星出版社/ 発売年月日：1994/08/25JAN：9784405021105",
+          "itemUrl": "https://item.rakuten.co.jp/bookoffonline/0015339333/",
+          "shopUrl": "https://www.rakuten.co.jp/bookoffonline/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/bookoffonline/cabinet/1/r_noimg.gif?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/bookoffonline/cabinet/1/r_noimg.gif?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 1,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 1,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 0,
+          "asurakuClosingTime": "",
+          "asurakuArea": "",
+          "affiliateRate": 1,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 0,
+          "reviewAverage": 0,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "ブックオフオンライン楽天市場店",
+          "shopCode": "bookoffonline",
+          "genreId": "208725",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "練習用カットウィッグ 3台セットカットウイッグ マネキンヘッド カットマネキン フェザー 高品質人毛100％ 実技試験 美容師",
+          "catchcopy": "人毛100％でこの価格！美容師試験を受験する学生さん＆新人美容師さん応援キャンペーン",
+          "itemCode": "syarepark:10000116",
+          "itemPrice": 11480,
+          "itemCaption": "【送料無料とさせていただきます】美容師試験を受験する学生さん！新人美容師さん！応援キャンペーン お求めになるなら今です！まとめ買いのチャンス！人毛高騰の為、人毛100％のカットウイッグがこの価格で手に入るのはラストチャンスです。クランプは付属しておりません。 *****************************************************************容器やパッケージデザインの一部が、 お客様への事前の告知なしに変更する場合があります。 中身・成分等の変更はありませんので、ご了承下さい。*****************************************************************",
+          "itemUrl": "https://item.rakuten.co.jp/syarepark/cutwig-001/",
+          "shopUrl": "https://www.rakuten.co.jp/syarepark/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/cutwig/imgrc0067423517.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/cutwig/imgrc0067423517.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 0,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 0,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 1,
+          "asurakuClosingTime": "14:00",
+          "asurakuArea": "群馬県/埼玉県/千葉県/東京都/神奈川県/新潟県/富山県/石川県/福井県/山梨県/長野県/岐阜県/静岡県/愛知県/三重県/滋賀県/京都府/大阪府/兵庫県/奈良県/和歌山県/宮城県/山形県/福島県/茨城県/栃木県",
+          "affiliateRate": 2,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 3,
+          "reviewAverage": 3.67,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "まつげエクステ専門店シャレパーク",
+          "shopCode": "syarepark",
+          "genreId": "200056",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "練習用カットウィッグ1台期間限定お試し価格カットウイッグ マネキンヘッド カットマネキン フェザー 高品質人毛100％ 実技試験 美容師",
+          "catchcopy": "人毛100％でこの価格！美容師試験を受験する学生さん＆新人美容師さん応援キャンペーンまず使ってみて下さい！",
+          "itemCode": "syarepark:10000595",
+          "itemPrice": 3480,
+          "itemCaption": "人毛100％・はえぎわ・耳もしっかりしています美容師試験を受験する学生さん！新人美容師さん！応援キャンペーン お求めになるなら今です！まとめ買いのチャンス！人毛高騰の為、人毛100％のカットウイッグがこの価格で手に入るのはラストチャンスです。クランプは付属しておりません。 *****************************************************************容器やパッケージデザインの一部が、 お客様への事前の告知なしに変更する場合があります。 中身・成分等の変更はありませんので、ご了承下さい。*****************************************************************",
+          "itemUrl": "https://item.rakuten.co.jp/syarepark/cutwig-002/",
+          "shopUrl": "https://www.rakuten.co.jp/syarepark/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185550.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185550.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 1,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 0,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 1,
+          "asurakuClosingTime": "14:00",
+          "asurakuArea": "群馬県/埼玉県/千葉県/東京都/神奈川県/新潟県/富山県/石川県/福井県/山梨県/長野県/岐阜県/静岡県/愛知県/三重県/滋賀県/京都府/大阪府/兵庫県/奈良県/和歌山県/宮城県/山形県/福島県/茨城県/栃木県",
+          "affiliateRate": 2,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 5,
+          "reviewAverage": 4.2,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "まつげエクステ専門店シャレパーク",
+          "shopCode": "syarepark",
+          "genreId": "204236",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "練習用カットウィッグ 6台セットカットウイッグ マネキンヘッド カットマネキン フェザー 高品質人毛100％ 実技試験 美容師",
+          "catchcopy": "人毛100％でこの価格！美容師試験を受験する学生さん＆新人美容師さん応援キャンペーン",
+          "itemCode": "syarepark:10000630",
+          "itemPrice": 22680,
+          "itemCaption": "【送料無料とさせていただきます】美容師試験を受験する学生さん！新人美容師さん！応援キャンペーン お求めになるなら今です！まとめ買いのチャンス！ 人毛高騰の為、人毛100％のカットウイッグがこの価格で手に入るのはラストチャンスです。クランプは付属しておりません。 *****************************************************************容器やパッケージデザインの一部が、 お客様への事前の告知なしに変更する場合があります。 中身・成分等の変更はありませんので、ご了承下さい。*****************************************************************",
+          "itemUrl": "https://item.rakuten.co.jp/syarepark/cutwig-006/",
+          "shopUrl": "https://www.rakuten.co.jp/syarepark/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/cutwig/imgrc0067423518.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/cutwig/imgrc0067423518.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 0,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 0,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "ワールドワイド",
+          "asurakuFlag": 1,
+          "asurakuClosingTime": "14:00",
+          "asurakuArea": "群馬県/埼玉県/千葉県/東京都/神奈川県/新潟県/富山県/石川県/福井県/山梨県/長野県/岐阜県/静岡県/愛知県/三重県/滋賀県/京都府/大阪府/兵庫県/奈良県/和歌山県/宮城県/山形県/福島県/茨城県/栃木県",
+          "affiliateRate": 2,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 0,
+          "reviewAverage": 0,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "まつげエクステ専門店シャレパーク",
+          "shopCode": "syarepark",
+          "genreId": "200056",
+          "tagIds": []
+        }
+      },
+      {
+        "Item": {
+          "itemName": "練習用カットウィッグ 20台セットカットウイッグ マネキンヘッド カットマネキン フェザー 高品質人毛100％ 実技試験 美容師",
+          "catchcopy": "人毛100％でこの価格！美容師試験を受験する学生さん＆新人美容師さん応援キャンペーン",
+          "itemCode": "syarepark:10000631",
+          "itemPrice": 75600,
+          "itemCaption": "【送料無料とさせていただきます】美容師試験を受験する学生さん！新人美容師さん！応援キャンペーン お求めになるなら今です！まとめ買いのチャンス！人毛高騰の為、人毛100％のカットウイッグがこの価格で手に入るのはラストチャンスです。クランプは付属しておりません。 *****************************************************************容器やパッケージデザインの一部が、 お客様への事前の告知なしに変更する場合があります。 中身・成分等の変更はありませんので、ご了承下さい。*****************************************************************",
+          "itemUrl": "https://item.rakuten.co.jp/syarepark/cutwig-020/",
+          "shopUrl": "https://www.rakuten.co.jp/syarepark/",
+          "smallImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/cutwig/imgrc0067423519.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=64x64"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=64x64"
+            }
+          ],
+          "mediumImageUrls": [
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/cutwig/imgrc0067423519.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185551.jpg?_ex=128x128"
+            },
+            {
+              "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/syarepark/cabinet/wig/imgrc0067185552.jpg?_ex=128x128"
+            }
+          ],
+          "affiliateUrl": "",
+          "shopAffiliateUrl": "",
+          "imageFlag": 1,
+          "availability": 1,
+          "taxFlag": 0,
+          "postageFlag": 0,
+          "creditCardFlag": 1,
+          "shopOfTheYearFlag": 0,
+          "shipOverseasFlag": 0,
+          "shipOverseasArea": "",
+          "asurakuFlag": 1,
+          "asurakuClosingTime": "14:00",
+          "asurakuArea": "群馬県/埼玉県/千葉県/東京都/神奈川県/新潟県/富山県/石川県/福井県/山梨県/長野県/岐阜県/静岡県/愛知県/三重県/滋賀県/京都府/大阪府/兵庫県/奈良県/和歌山県/宮城県/山形県/福島県/茨城県/栃木県",
+          "affiliateRate": 2,
+          "startTime": "",
+          "endTime": "",
+          "reviewCount": 0,
+          "reviewAverage": 0,
+          "pointRate": 1,
+          "pointRateStartTime": "",
+          "pointRateEndTime": "",
+          "giftFlag": 0,
+          "shopName": "まつげエクステ専門店シャレパーク",
+          "shopCode": "syarepark",
+          "genreId": "200056",
+          "tagIds": []
+        }
+      }
+    ],
+    "GenreInformation": [],
+    "TagInformation": []
+  }
+  it("JSONから配列へ：ノーマル", function(){
     assert.isArray(jsonToArray(bd));
+  });
+  it("JSONから配列へ：無入力", function(){
+    assert.isArray(jsonToArray(notext));
+  });
+  it("JSONから配列へ：ヒット商品なし", function(){
+    assert.isArray(jsonToArray(noresult));
+  });
+  it("JSONから配列へ：ヒット商品数が３０以下", function(){
+    assert.isArray(jsonToArray(biyoushi));
   });
 });
 
