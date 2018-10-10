@@ -1466,6 +1466,7 @@ var jsonToArray = function(){
         resultArrayR.push(analysisResultR["Items"][i]["Item"]["itemName"]);
         // 検索結果が30商品に満たなかった場合の処理
         if(analysisResultR["Items"][i+1] == undefined) return resultArrayR;}
+    console.log(resultArrayR);
 }
 
 describe("楽天のテスト",function(){
