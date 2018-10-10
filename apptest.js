@@ -1460,16 +1460,16 @@ var jsonToArray = function(){
   return resultArrayR;
 }
 
-console.log(jsonToArray());
 
-/*
+
+
 describe("楽天のテスト",function(){
     
     it("JSONから配列へ", function(){
         assert.isArray(jsonToArray());
     });
 });
-*/
+
 
 //-----------------------------------------------------------------------
 
