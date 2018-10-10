@@ -39,8 +39,6 @@ app.post("/form", function(req, res) {
         }, function(error,response,body){
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
-        console.log(body);
-        console.log(analysisResultR);
 
         // 該当商品が無かった場合の処理
         if(analysisResultR["Items"][0]==undefined) {
@@ -51,7 +49,7 @@ app.post("/form", function(req, res) {
 
         // 検索でヒットした商品のタイトルを配列に格納
         for(var i=0; i<30; i++){    
-            resultArrayR.push(analysisResultR.Items.i.Item.itemName);
+            resultArrayR.push(analysisResultR.Items[i].Item.itemName);
             // 検索結果が30商品に満たなかった場合の処理
             if(analysisResultR.Items.i+1 == undefined) break;
         }
