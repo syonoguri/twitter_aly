@@ -37,7 +37,7 @@ app.post("/form", function(req, res) {
                 keyword: req.body.sentence,
             }
         }, function(error,response,body){
-        var analysisResultR = JSON.parse(body);
+        var analysisResultR = JSON.parse(JSON.stringify(body));
         var resultArrayR = [];
 
         console.log(analysisResultR);
