@@ -12,7 +12,7 @@ describe("仮テスト", function(){
     });
 });
 
-/*
+
 var body ={
     "count": 7006,
     "page": 1,
@@ -1468,7 +1468,7 @@ var jsonToArray = function(){
 
 describe("楽天のテスト",function(){
     it("JSONから配列へ", function(){
-        assert.isArray(jsonToArray(analysisResultR));
+        assert.isArray(jsonToArray(resultArrayR));
     });
 });
 
@@ -1481,5 +1481,5 @@ for(var i in analysisResult){
     resultArray.push(i+":"+analysisResult[i]);
 }
 var resultOutput = resultArray.join(" , ");
-res.render("result",{result: resultOutput});
+res.render("result",{result: resultOutput})
 */
