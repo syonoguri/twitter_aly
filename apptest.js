@@ -1471,7 +1471,7 @@ var jsonToArray = function(){
 describe("楽天のテスト",function(){
     
     it("JSONから配列へ", function(){
-        assert.isArray(jsonToArray(body));
+        assert.isArray(jsonToArray());
     });
 });
 
