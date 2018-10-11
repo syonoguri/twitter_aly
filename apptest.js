@@ -1,3 +1,7 @@
+/*
+
+*/
+
 var chai = require("chai");
 var assert = chai.assert;
 
@@ -1952,18 +1956,20 @@ describe("楽天のテスト",function(){
     "TagInformation": []
   }`
   it("JSONから配列へ：ノーマル", function(){
-    assert.isArray(jsonToArray(bd));
+    assert.isAbove(jsonToArray(bd).length,0);
   });
   it("JSONから配列へ：無入力", function(){
-    assert.isArray(jsonToArray(notext));
+    assert.isAbove(jsonToArray(notext).length,0);
   });
   it("JSONから配列へ：ヒット商品なし", function(){
-    assert.isArray(jsonToArray(noresult));
+    assert.equal(jsonToArray(noresult).length,0);
   });
   it("JSONから配列へ：ヒット商品数が３０以下", function(){
-    assert.isArray(jsonToArray(biyoushi));
+    assert.isAbove(jsonToArray(biyoushi).length,0);  
   });
 });
+
+
 
 
 //-----------------------------------------------------------------------
