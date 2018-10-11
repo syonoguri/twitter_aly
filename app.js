@@ -28,11 +28,11 @@ app.get("/form", function(req, res) {
 
 app.post("/form", function(req, res) {
     if(req.body.sentence=="") {
-        res.render("result",{result: "Error: 入力がありません"})
+        res.render("form",{result: "Error: 入力がありません"})
     } else if(req.body.sentence.length>128){
-        res.render("result",{result: "Error: 128文字以内で入力してください"})
+        res.render("form",{result: "Error: 128文字以内で入力してください"})
     } else if(/^\s+$/.test(req.body.sentence)){
-        res.render("result",{result: "Error: スペースのみでの検索はできません"})
+        res.render("form",{result: "Error: スペースのみでの検索はできません"})
     } else {
         request.get({
             url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
@@ -47,7 +47,7 @@ app.post("/form", function(req, res) {
         // 該当商品が無かった場合の処理
         if(analysisResultR["Items"][0]==undefined) {
             resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
-            res.render("result",{result: resultArrayR[0]});
+            res.render("form",{result: resultArrayR[0]});
             return;
         }
 
@@ -78,7 +78,7 @@ app.post("/form", function(req, res) {
             }
             var resultOutput = resultArray.join(" , ");
             console.log(analysisResult);
-            res.render("result",{result: resultOutput});
+            res.render("form",{result: resultOutput});
         }); 
     });
     }
