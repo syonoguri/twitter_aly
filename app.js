@@ -6,10 +6,12 @@ var app = express();
 var request = require("request")
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
+var cors = require("cors")
 
 var yKey = process.env.NODE_YKEY;
 var rKey = process.env.NODE_RKEY;
 
+app.use(cors());
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
