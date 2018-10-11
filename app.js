@@ -29,6 +29,8 @@ app.get("/form", function(req, res) {
 app.post("/form", function(req, res) {
     if(req.body.sentence=="") {
         res.render("result",{result: "Error: 入力がありません"})
+    } else if(req.body.sentence.length()>128){
+        res.render("result",{result: "Error: 128文字以内で入力してください"})
     } else {
         request.get({
             url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
