@@ -3,9 +3,10 @@ html(lang="ja")
     head
         meta(charset="utf-8")
     body
-        h1 フォーム
+        h1 楽天商品タイトルキーワード抽出アプリ
+        p aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         form(action="/form" method="POST")
-            input(type="text" name="sentence")    
+            input(id="word-field" type="text" name="sentence" required)    
             button(type="submit") 送信
         h2 分析結果
         p #{result}
