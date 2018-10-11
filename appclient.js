@@ -20,9 +20,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/form", function(req, res) {
     if(req.body.sentence=="") {
-        res.json("Error: 入力がありません")
+        res.send("Error: 入力がありません")
     } else if(req.body.sentence.length>128){
-        res.json("Error: 128文字以内で入力してください")
+        res.send("Error: 128文字以内で入力してください")
     } else if(/^\s+$/.test(req.body.sentence)){
         res.send("Error: スペースのみでの検索はできません")
     } else {
@@ -70,7 +70,7 @@ app.post("/form", function(req, res) {
             }
             var resultOutput = resultArray.join(" , ");
             console.log(analysisResult);
-            res.json(resultOutput);
+            res.send(resultOutput);
         }); 
     });
     }
