@@ -1,11 +1,6 @@
 var chai = require("chai");
 var assert = chai.assert;
 
-
-
-
-
-
 var jsonToArray = function(body){
   
   var analysisResultR = JSON.parse(body);

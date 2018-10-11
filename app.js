@@ -39,8 +39,7 @@ app.post("/form", function(req, res) {
         }, function(error,response,body){
         var analysisResultR = JSON.parse(body);
         var resultArrayR = [];
-        console.log(body);
-        console.log(analysisResultR["Items"][0]);
+        
         // 該当商品が無かった場合の処理
         if(analysisResultR["Items"][0]==undefined) {
             resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
