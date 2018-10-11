@@ -77,6 +77,7 @@ app.post("/form", function(req, res) {
                 resultArray.push(i+":"+analysisResult[i]);
             }
             var resultOutput = resultArray.join(" , ");
+            console.log(body);
             res.render("result",{result: resultOutput});
         }); 
     });
