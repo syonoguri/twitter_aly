@@ -1956,16 +1956,14 @@ describe("楽天のテスト",function(){
     "TagInformation": []
   }`
   it("JSONから配列へ：ノーマル", function(){
-    assert.isAbove(jsonToArray(bd).length,0);
-  });
-  it("JSONから配列へ：無入力", function(){
-    assert.isAbove(jsonToArray(notext).length,0);
+    assert.equal(jsonToArray(bd).length,30);
   });
   it("JSONから配列へ：ヒット商品なし", function(){
     assert.equal(jsonToArray(noresult)[0],"Error:このキーワードでヒットする商品がありません。");
   });
-  it("JSONから配列へ：ヒット商品数が３０以下", function(){
-    assert.isAbove(jsonToArray(biyoushi).length,0);  
+  it("JSONから配列へ：ヒット商品数が３０未満", function(){
+    assert.isAbove(jsonToArray(biyoushi).length,0);
+    assert.isBelow(jsonToArray(biyoushi).length,30)  
   });
 });
 
