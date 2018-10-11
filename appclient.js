@@ -21,8 +21,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post("/form", function(req, res) {
     if(req.body.sentence=="") {
         res.send("Error: 入力がありません")
-    } else if(req.body.sentence.length>128){
-        res.send("Error: 128文字以内で入力してください")
     } else if(/^\s+$/.test(req.body.sentence)){
         res.send("Error: スペースのみでの検索はできません")
     } else {
