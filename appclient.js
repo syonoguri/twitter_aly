@@ -10,29 +10,21 @@ var morgan = require("morgan");
 var yKey = process.env.NODE_YKEY;
 var rKey = process.env.NODE_RKEY;
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/static", express.static(path.join(__dirname,"static")));
-
-app.set("views", path.join(__dirname, "templates" ));
-app.set("view engine", "pug");
-
-app.get("/", function(req, res) {
-    return res.render("index", {title: "Hello World" });
-});
-app.get("/form", function(req, res) {
-    return res.render("form");
-});
-
-
 app.post("/form", function(req, res) {
     if(req.body.sentence=="") {
-        res.render("form",{result: "Error: 入力がありません"})
+        res.send("Error: 入力がありません")
     } else if(req.body.sentence.length>128){
-        res.render("form",{result: "Error: 128文字以内で入力してください"})
+        res.send("Error: 128文字以内で入力してください")
     } else if(/^\s+$/.test(req.body.sentence)){
-        res.render("form",{result: "Error: スペースのみでの検索はできません"})
+        res.send("Error: スペースのみでの検索はできません")
     } else {
         request.get({
             url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
@@ -47,7 +39,7 @@ app.post("/form", function(req, res) {
         // 該当商品が無かった場合の処理
         if(analysisResultR["Items"][0]==undefined) {
             resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
-            res.render("form",{result: resultArrayR[0]});
+            res.send(resultArrayR[0]);
             return;
         }
 
@@ -78,7 +70,7 @@ app.post("/form", function(req, res) {
             }
             var resultOutput = resultArray.join(" , ");
             console.log(analysisResult);
-            res.render("form",{result: resultOutput});
+            res.send(resultOutput);
         }); 
     });
     }
