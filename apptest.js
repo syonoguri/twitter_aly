@@ -1962,7 +1962,7 @@ describe("楽天のテスト",function(){
     assert.isAbove(jsonToArray(notext).length,0);
   });
   it("JSONから配列へ：ヒット商品なし", function(){
-    assert.equal(jsonToArray(noresult).length,0);
+    assert.equal(jsonToArray(noresult)[0],"Error:このキーワードでヒットする商品がありません。");
   });
   it("JSONから配列へ：ヒット商品数が３０以下", function(){
     assert.isAbove(jsonToArray(biyoushi).length,0);  
