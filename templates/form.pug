@@ -1,10 +1,12 @@
+var result = "分析結果がここに表示されます。";
+
 doctype html
 html(lang="ja")
     head
         meta(charset="utf-8")
     body
-        h1 楽天商品タイトルキーワード抽出アプリ
-        p aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        h1 楽天タイトルキーワード抽出
+        p 入力したキーワードにヒットする商品タイトルのうち、主要なキーワードを抽出します。
         form(action="/form" method="POST")
             input(id="word-field" type="text" name="sentence" required)    
             button(type="submit") 送信
