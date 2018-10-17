@@ -65,7 +65,7 @@ app.post("/form", function(req, res) {
                 output: "json"
             }
         }, function(error, response, body){
-            res.send(body);
+            res.send(JSON.parse(body));
         }); 
     });
     }
