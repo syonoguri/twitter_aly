@@ -30,6 +30,8 @@ app.post("/form", function(req, res) {
         res.send("Error: 入力がありません")
     } else if(/^\s+$/.test(req.body.sentence)){
         res.send("Error: スペースのみでの検索はできません")
+    } else if(req.body.sentence.length>128){
+        res.send("Error: 128文字以内で入力してください")
     } else {
         request.get({
             url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
