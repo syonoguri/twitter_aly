@@ -18,7 +18,6 @@ app.use(function(req, res, next) {
 app.use("/static", express.static(path.join(__dirname,"static")));
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.get("/form", function (req, res) {
     res.send("Hello World");
