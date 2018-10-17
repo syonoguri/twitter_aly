@@ -18,13 +18,14 @@ app.use(function(req, res, next) {
 app.use("/static", express.static(path.join(__dirname,"static")));
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get("/form", function (request, response) {
-    response.send("Hello World");
+app.get("/form", function (req, res) {
+    res.send("Hello World");
   });
 
 app.post("/form", function(req, res) {
-    console.log(req.body.sentence);
+    console.log(req);
     if(req.body.sentence=="") {
         res.send("Error: 入力がありません")
     } else if(/^\s+$/.test(req.body.sentence)){
