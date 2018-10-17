@@ -28,6 +28,7 @@ app.get("/form", function(req, res) {
 
 
 app.post("/form", function(req, res) {
+    console.log(req.body.sentence);
     if(req.body.sentence=="") {
         res.render("form",{result: "Error: 入力がありません"})
     } else if(req.body.sentence.length>128){
