@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post("/form", function(req, res) {
+app.post("./form", function(req, res) {
     if(req.body.sentence=="") {
         res.send("Error: 入力がありません")
     } else if(/^\s+$/.test(req.body.sentence)){
