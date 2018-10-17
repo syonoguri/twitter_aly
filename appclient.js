@@ -10,14 +10,14 @@ var morgan = require("morgan");
 var yKey = process.env.NODE_YKEY;
 var rKey = process.env.NODE_RKEY;
 
-
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.use("/static", express.static(path.join(__dirname,"static")));
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get("/form", function (req, res) {
-    res.send("Hello World");
-  });
 
 app.post("/form", function(req, res) {
     console.log(req);
@@ -54,7 +54,6 @@ app.post("/form", function(req, res) {
         }
         // 配列に格納した商品タイトルを文字列に変換
         var resultOutputR = resultArrayR.join("");
-
         var analysis = request.post({
             url: "https://jlp.yahooapis.jp/KeyphraseService/V1/extract",
             headers: {
