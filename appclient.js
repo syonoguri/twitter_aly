@@ -24,7 +24,7 @@ app.get("/form", function (request, response) {
   });
 
 app.post("/form", function(req, res) {
-    console.log(req.body.sentence);
+    console.log(req.body);
     if(req.body.sentence=="") {
         res.send("Error: 入力がありません")
     } else if(/^\s+$/.test(req.body.sentence)){
