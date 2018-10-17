@@ -3,7 +3,6 @@ var express = require("express");
 var http = require("http");
 var path = require("path");
 var app = express();
-var router = express.Router();
 var request = require("request")
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
@@ -18,7 +17,11 @@ app.use(function(req, res, next) {
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-router.post("/form", function(req, res) {
+app.get("/form", function (request, response) {
+    response.send("Hello World");
+  });
+
+app.post("/form", function(req, res) {
     res.send("nice");
     if(req.body.sentence=="") {
         res.send("Error: 入力がありません")
