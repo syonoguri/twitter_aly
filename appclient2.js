@@ -22,11 +22,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post("/form", function(req, res) {
     console.log(req);
     if(req.body.sentence=="") {
-        res.send(JSON.parse("Error: 入力がありません"))
+        res.send(JSON.stringify("Error: 入力がありません"));
     } else if(/^\s+$/.test(req.body.sentence)){
-        res.send(JSON.parse("Error: スペースのみでの検索はできません"))
+        res.send(JSON.stringify("Error: スペースのみでの検索はできません"));
     } else if(req.body.sentence.length>128){
-        res.send(JSON.parse("Error: 128文字以内で入力してください"))
+        res.send(JSON.stringify("Error: 128文字以内で入力してください"));
     } else {
         request.get({
             url: "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
@@ -42,7 +42,7 @@ app.post("/form", function(req, res) {
         // 該当商品が無かった場合の処理
         if(analysisResultR["Items"][0]==undefined) {
             resultArrayR[0] = "Error:このキーワードでヒットする商品がありません。";
-            res.send(JSON.parse(resultArrayR[0]));
+            res.send(JSON.stringify(resultArrayR[0]));
             return;
         }
 
