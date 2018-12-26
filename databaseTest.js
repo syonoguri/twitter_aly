@@ -48,3 +48,5 @@ app.post("/form", function(req, res) {
     res.send("");   
 });
 
+var server = http.createServer(app);
+server.listen(3000);
