@@ -40,14 +40,16 @@ app.post("/form", function(req, res) {
             console.log(results[i].name + " " + results[i].password);
             if(req.body.loginName == results[i].name && req.body.loginPassword == results[i].password){
                 res.send(true);
+                connection.end();
                 return;
             }
-            res.send(false);
         }
+        res.send(false);
+        connection.end();
     });
 
 //insert
-    connection.end();
+    
 });
 
 var server = http.createServer(app);
