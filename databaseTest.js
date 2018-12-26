@@ -1,9 +1,9 @@
 var mysql = require("/usr/local/lib/node_modules/mysql");
 var connection = mysql.createConnection({
     host:"localhost",
-    database:"rakutenapplication",
+    database:"MySQL80",
     user:"dbuser",
-    password:"gladcubeogr"
+    password:"syouzi11"
 });
 
 //select
