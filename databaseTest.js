@@ -22,6 +22,6 @@ var query = connection.query("select * from login",function(err,results){
 });
 
 //insert
-var query2 = connection.query("insert into members(name,email) values('test','test@test.com')");
+
 
 connection.end();
