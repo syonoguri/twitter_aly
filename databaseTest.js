@@ -17,8 +17,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/form", function(req, res) {
     console.log(req);
-    var server = http.createServer(app);
-    server.listen(3000);
 
     var mysql = require("/usr/local/lib/node_modules/mysql");
     var connection = mysql.createConnection({
@@ -40,12 +38,16 @@ app.post("/form", function(req, res) {
         //get rows
         for(var i in results){
             console.log(results[i].name + " " + results[i].password);
+            if(req.body.loginName == results[i].name && req.body.loginPassword == results[i].password){
+                res.send(true);
+                return;
+            }
+            res.send(false);
         }
     });
 
 //insert
     connection.end();
-    res.send("");   
 });
 
 var server = http.createServer(app);
