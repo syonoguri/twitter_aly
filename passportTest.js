@@ -16,13 +16,14 @@ app.set("views", path.join(__dirname, "templates" ));
 app.set("view engine", "pug");
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
-// 既に色々入っているので、そこへ追加
+
+
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 
 // signinページの追加
-var signinRouter = require('.routes/signin');
+var signinRouter = require('/signin.js');
 app.use('/signin');
 
 // session, passport.initialize, passport.sessionは以下の順番で追加
