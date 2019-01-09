@@ -72,11 +72,6 @@ app.post('/signin',
     }
   ),
   function(req, res, next){
-    // res.redirect("/")でreq.userが渡せなかったので、ここでfetchを使っています。
-    // https://github.com/jaredhanson/passport/issues/244
-    // fetchは以下のようにインストール
-    // npm install --save isomorphic-fetch
-    // var fetch = require('isomorphic-fetch');
     fetch("http://localhost:3000/signin",
       {
         credentials: "include"
