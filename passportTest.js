@@ -26,6 +26,10 @@ var session = require('express-session');
 var signinRouter = require('./signin');
 app.use(signinRouter);
 
+//indexページの追加
+var index = require("./index");
+app.use(index);
+
 // session, passport.initialize, passport.sessionは以下の順番で追加
 app.use(session({
   secret: "testing",
