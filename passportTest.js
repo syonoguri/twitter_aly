@@ -21,7 +21,7 @@ var LocalStrategy = require("passport-local").Strategy;
 var session = require("express-session");
 
 // signin ページの追加
-var signinRouter = require(".router/signin");
+var signinRouter = require(".routes/signin");
 app.use("/signin");
 
 // session, passport.initialize, passport.sessionは以下の順番で追加
