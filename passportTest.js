@@ -3,6 +3,7 @@ var http = require("http");
 var app = express();
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
+var fetch = require("isomorphic-fetch");
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
