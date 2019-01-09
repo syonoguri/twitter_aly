@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   if (req.user) { // ログインしているユーザーが存在する場合のみ有効
     res.render("index", { username: req.user.name});
   } else { // ユーザーが存在しなければ、サインインページへ飛ばされる
-    res.redirect('/signin');
+    res.redirect(signinRouter);
   }
 });
 
