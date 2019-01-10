@@ -17,7 +17,17 @@ var connection = mysql.createConnection({
     password:"gladcubeogr"
 });
 
-app.use(session({secret:"gcogr"}));
+app.use(session({
+  secret: "sampleSecretKey",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      httpOnly: true, 
+      secure: false, 
+      maxage: 1000 * 60 * 30
+  }
+}));
+
 app.use(flash());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -38,6 +48,14 @@ app.use(signinRouter);
 //indexページの追加
 var index = require("./index.js");
 app.use(index);
+
+passport.serializeUser((user, done) => {
+  return done(null, user.name);
+});
+
+passport.deserializeUser( (name, done) => {
+  return done(null, name);
+});
 
 app.post("/signin",
   passport.authenticate("local", { successRedirect: "/index",
