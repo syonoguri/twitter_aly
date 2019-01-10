@@ -8,6 +8,7 @@ var fetch = require("isomorphic-fetch");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
+var flash = require("connect-flash");
 var mysql = require("/usr/local/lib/node_modules/mysql");
 var connection = mysql.createConnection({
     host:"localhost",
@@ -15,7 +16,7 @@ var connection = mysql.createConnection({
     user:"dbuser",
     password:"gladcubeogr"
 });
-
+app.use(flash());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
