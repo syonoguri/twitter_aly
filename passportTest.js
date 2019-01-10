@@ -17,16 +17,7 @@ var connection = mysql.createConnection({
     password:"gladcubeogr"
 });
 
-app.use(session({
-  secret: "sampleSecretKey",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-      httpOnly: true, 
-      secure: false, 
-      maxage: 1000 * 60 * 30
-  }
-}));
+
 
 app.use(flash());
 app.use(function(req, res, next) {
@@ -48,7 +39,6 @@ app.use(signinRouter);
 //indexページの追加
 var index = require("./index.js");
 app.use(index);
-
 
 
 
