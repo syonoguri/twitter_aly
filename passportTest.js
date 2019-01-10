@@ -23,11 +23,11 @@ var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 
 // signinページの追加
-var signinRouter = require('./signin');
+var signinRouter = require('./signin.js');
 app.use(signinRouter);
 
 //indexページの追加
-var index = require("./index");
+var index = require("./index.js");
 app.use(index);
 
 // session, passport.initialize, passport.sessionは以下の順番で追加
@@ -68,20 +68,10 @@ passport.use(new LocalStrategy(
 app.post('/signin',
   passport.authenticate('local',
     {
-      failureRedirect: "/signin"
+      successRedirect: "/success",
+      failureRedirect: "/signin",
+      failureFlash: "Invalid username or password"
     }
-  ),
-  function(req, res, next){
-    fetch("http://localhost:3000/signin",
-      {
-        credentials: "include"
-      }
-    ).then(function(){
-      res.redirect("/");
-    }).catch(function(e){
-      console.log(e);
-    });
-  }
-);
+  ));
 var server = http.createServer(app);
 server.listen(3000);
