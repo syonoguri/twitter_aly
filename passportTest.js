@@ -47,6 +47,7 @@ passport.use(new LocalStrategy(
     connection.query("select * from users;",function(err,users){
       for(i=0; i<users.length; i++){
         if(users[i].name == username && users[i].password == password){
+          console.log("success!");
           return done(null, username);
         }
       }
