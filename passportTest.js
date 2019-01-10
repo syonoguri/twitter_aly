@@ -74,7 +74,7 @@ passport.use(new LocalStrategy(
   },
   function(username, password, done){
     console.log("nowlogining")
-    connection.query("select * from users;",function(err,users){
+    connection.query("select * from login;",function(err,users){
       if(err) {return done(err);}
       for(i=0; i<users.length; i++){
         if(users[i].name == username && users[i].password == password){
