@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router_index = express.Router();
 
 // index.pugをgetした時にコールバックを実行
 router.get('/', function(req, res, next) {
@@ -11,4 +11,4 @@ router.get('/', function(req, res, next) {
   }
 });
 
-module.exports = router;
+module.exports = router_index;
