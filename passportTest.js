@@ -29,6 +29,7 @@ app.set("views", path.join(__dirname, "templates" ));
 app.set("view engine", "pug");
 app.use(logger("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
 
 // signinページの追加
 var signinRouter = require('./signin.js');
@@ -38,6 +39,12 @@ app.use(signinRouter);
 var index = require("./index.js");
 app.use(index);
 
+app.post("/signin",
+  passport.authenticate("local", { successRedirect: "/index",
+                                    failureRedirect:"/signin",
+                                      failureFlash: true })
+);
+
 passport.use(new LocalStrategy(
   {
     usernameField: "name",
@@ -46,6 +53,7 @@ passport.use(new LocalStrategy(
   function(username, password, done){
     console.log("nowlogining")
     connection.query("select * from users;",function(err,users){
+      if(err) {return done(err);}
       for(i=0; i<users.length; i++){
         if(users[i].name == username && users[i].password == password){
           console.log("success!");
@@ -57,11 +65,6 @@ passport.use(new LocalStrategy(
   }
 )); 
 
-app.post("/signin",
-  passport.authenticate("local", { successRedirect: "/index",
-                                    failureRedirect:"/signin",
-                                      failureFlash: true })
-);
 
 
 
