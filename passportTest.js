@@ -31,6 +31,8 @@ app.set("view engine", "pug");
 app.use(logger("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use(session({ secret: "cats" }));
+app.use(passport.session());
 
 // signinページの追加
 var signinRouter = require('./signin.js');
@@ -40,6 +42,15 @@ app.use(signinRouter);
 var index = require("./index.js");
 app.use(index);
 
+
+passport.serializeUser((login, done) => {
+  return done(null, login.id);
+});
+
+passport.deserializeUser(function(username, done) {
+	console.log('deserializeUser');
+	done(null, {name:username, msg:'my message'});
+});
 
 
 app.post("/signin",
