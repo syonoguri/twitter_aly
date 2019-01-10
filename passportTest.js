@@ -16,6 +16,8 @@ var connection = mysql.createConnection({
     user:"dbuser",
     password:"gladcubeogr"
 });
+
+app.use(session({secret:"gcogr"}));
 app.use(flash());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
