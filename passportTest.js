@@ -62,14 +62,14 @@ passport.deserializeUser( (name, done) => {
 
 
 app.post("/signin",
-  passport.authenticate("local", { successRedirect: "/in",
+  passport.authenticate("local", { successRedirect: "/index",
                                     failureRedirect:"/signin",
                                       failureFlash: true })
 );
 
 passport.use(new LocalStrategy(
   {
-    usernameField: "name",
+    usernameField: "username",
     passwordField: "password"
   },
   function(username, password, done){
