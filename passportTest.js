@@ -43,8 +43,8 @@ var index = require("./index.js");
 app.use(index);
 
 
-passport.serializeUser((login, done) => {
-  return done(null, login.id);
+passport.serializeUser((username, done) => {
+  return done(null, username);
 });
 
 passport.deserializeUser(function(username, done) {
