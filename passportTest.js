@@ -47,7 +47,7 @@ passport.serializeUser((username, done) => {
   return done(null, username);
 });
 
-passport.deserializeUser(function(username, done) {
+passport.deserializeUser(function(username, done) {//ここがおかしい。
 	console.log('deserializeUser');
 	done(null, {name:username, msg:'my message'});
 });
