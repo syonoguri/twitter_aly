@@ -49,6 +49,9 @@ app.use(signinRouter);
 var index = require("./index.js");
 app.use(index);
 
+
+passport.session();
+
 passport.serializeUser((user, done) => {
   return done(null, user.name);
 });
@@ -56,6 +59,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser( (name, done) => {
   return done(null, name);
 });
+
 
 app.post("/signin",
   passport.authenticate("local", { successRedirect: "/index",
