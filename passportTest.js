@@ -2,9 +2,10 @@ var express = require("express");
 var http = require("http");
 var app = express();
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser")
 var path = require("path");
 var logger = require("morgan");
-var fetch = require("isomorphic-fetch");
+var request = require("request")
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
@@ -17,7 +18,11 @@ var connection = mysql.createConnection({
     password:"gladcubeogr"
 });
 
-
+app.post("/signin",
+  passport.authenticate("local", { successRedirect: "./routes/index",
+                                   failureRedirect:"./routes/signin",
+                                  　failureFlash: true })
+);
 
 app.use(flash());
 app.use(function(req, res, next) {
@@ -33,31 +38,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(session({ secret: "cats" }));
 app.use(passport.session());
-
-// signinページの追加
-var signinRouter = require('./signin.js');
-app.use(signinRouter);
-
-//indexページの追加
-var index = require("./index.js");
-app.use(index);
-
-
-passport.serializeUser((username, done) => {
-  return done(null, username);
-});
-
-passport.deserializeUser(function(username, done) {//ここがおかしい。
-	console.log('deserializeUser');
-	done(null, {name:username, msg:'my message'});
-});
-
-
-app.post("/signin",
-  passport.authenticate("local", { successRedirect: "/",
-                                    failureRedirect:"/signin",
-                                      failureFlash: true })
-);
 
 passport.use(new LocalStrategy(
   {
@@ -79,7 +59,22 @@ passport.use(new LocalStrategy(
   }
 )); 
 
+passport.serializeUser((username, done) => {
+  return done(null, username);
+});
 
+passport.deserializeUser(function(username, done) {//ここがおかしい。
+	console.log('deserializeUser');
+	done(null, {name:username, msg:'my message'});
+});
+
+// signinページの追加
+var signinRouter = require('./routes/signin.js');
+app.use(signinRouter);
+
+//indexページの追加
+var index = require("./routes/index.js");
+app.use(index);
 
 
 
