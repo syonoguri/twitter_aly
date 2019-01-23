@@ -36,7 +36,7 @@ app.post("/form", function(req, res) {
             }
         }, function(error,response,body){
         var analysisResultR = JSON.parse(body);
-        console.log("thisisResultR"+analysisResultR);
+        console.log("thisisResultR"+analysisResultR)["Items"];
         var resultArrayR = [];
         
         // 該当商品が無かった場合の処理
