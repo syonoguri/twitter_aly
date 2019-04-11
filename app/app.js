@@ -7,7 +7,6 @@ var request = require("request")
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
 
-v.NODE_RKEY;
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
