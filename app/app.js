@@ -19,6 +19,11 @@ app.use("/static", express.static(path.join(__dirname,"static")));
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get("/", function(req, res){
+    res.render("index");
+
+})
+
 app.post("/form", function(req, res) {
     console.log(req);
     if(req.body.sentence=="") {
