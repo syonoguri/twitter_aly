@@ -16,6 +16,7 @@ app.use(function(req, res, next) {
     next();
 });
 app.use("/static", express.static(path.join(__dirname,"static")));
+app.set("view engine", "pug");
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
